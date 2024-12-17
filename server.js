@@ -1,8 +1,40 @@
 const express = require("express");
+var sql = require("mssql");
+var cors = require("cors");
 const app = express();
 
+app.use(express.json());
 // Set up a port
 const PORT = process.env.PORT || 3000;
+
+// db info
+const config = {
+  user: "techno1", // better stored in an app setting such as process.env.DB_USER
+  password: "Gayatri@1999", // better stored in an app setting such as process.env.DB_PASSWORD
+  server: "technoaarambh.database.windows.net", // better stored in an app setting such as process.env.DB_SERVER
+  port: 1433, // optional, defaults to 1433, better stored in an app setting such as process.env.DB_PORT
+  database: "TADB", // better stored in an app setting such as process.env.DB_NAME
+  authentication: {
+    type: "default",
+  },
+  options: {
+    encrypt: true,
+  },
+};
+
+console.log("Starting...");
+
+app.get("/customerInfo", (req, res) => {
+  const data = req;
+  sql.connect(config, function () {
+    var request = new sql.Request();
+    request.query("select * from demo", function (err, recordset) {
+      if (err) console.log(err);
+      // res.end(JSON.stringify(recordset)); // Result in JSON format
+      res.send(recordset);
+    });
+  });
+});
 
 // Define a route
 app.get("/", (req, res) => {
