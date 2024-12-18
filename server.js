@@ -4,6 +4,12 @@ var cors = require("cors");
 const app = express();
 
 app.use(express.json());
+const corsOptions = {
+  origin: "http://localhost:3000", // Allow only requests from this origin
+  methods: "GET,POST", // Allow only these methods
+  allowedHeaders: ["Content-Type", "Authorization"], // Allow only these headers
+};
+app.use(cors(corsOptions));
 // Set up a port
 const PORT = process.env.PORT || 3000;
 
