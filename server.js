@@ -22,8 +22,8 @@ const PORT = process.env.PORT || 3000;
 // db info
 const config = {
   user: "techno1", // better stored in an app setting such as process.env.DB_USER
-  password: "Gayatri@1999", // better stored in an app setting such as process.env.DB_PASSWORD
-  server: "technoaarambh.database.windows.net", // better stored in an app setting such as process.env.DB_SERVER
+  password: "", // better stored in an app setting such as process.env.DB_PASSWORD
+  server: "enter your server name", // better stored in an app setting such as process.env.DB_SERVER
   port: 1433, // optional, defaults to 1433, better stored in an app setting such as process.env.DB_PORT
   database: "TADB", // better stored in an app setting such as process.env.DB_NAME
   authentication: {
